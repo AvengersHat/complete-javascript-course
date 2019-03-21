@@ -358,3 +358,30 @@ switch (true){
         console.log('It\'s a tie. All teams average ' + teamJohn);
 }
 
+
+/***********************
+* Functions
+*/
+
+function calculateAge(birthYear) {
+    return 2019 - birthYear;
+}
+
+
+var ageJohn = calculateAge(1982);
+var ageMark = calculateAge(1990);
+var ageMary = calculateAge(1972);
+
+
+console.log(ageJohn, ageMark, ageMary);
+
+function yearsToRetire(year, firstName)
+{
+    var age = calculateAge(year);
+    var retirement = 65 - age;
+    console.log(firstName +' retires in ' + retirement + ' years.')
+    
+}
+
+yearsToRetire(1982, 'Gareth');
+
