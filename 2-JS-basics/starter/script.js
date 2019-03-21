@@ -310,7 +310,7 @@ John and Mike both play basketball in different teams. In the latest 3 games, Jo
 
 GOOD LUCK 😀
 */
-
+/*
 var teamJohn, teamMike;
 teamJohn = (89 + 120 + 105) / 3;
 teamMike = (116 + 94 + 123) / 3;
@@ -357,12 +357,13 @@ switch (true){
     case (teamJohn === teamMike === teamMary):
         console.log('It\'s a tie. All teams average ' + teamJohn);
 }
-
+*/
 
 /***********************
 * Functions
 */
 
+/*
 function calculateAge(birthYear) {
     return 2019 - birthYear;
 }
@@ -379,9 +380,182 @@ function yearsToRetire(year, firstName)
 {
     var age = calculateAge(year);
     var retirement = 65 - age;
-    console.log(firstName +' retires in ' + retirement + ' years.')
+    
+    if (retirement > 0) {
+    console.log(firstName +' retires in ' + retirement + ' years.')    
+    } else {
+    console.log(firstName + ' is retired.')    
+    }
     
 }
 
 yearsToRetire(1982, 'Gareth');
+yearsToRetire(1982, 'John');
+yearsToRetire(1990, 'Mark');
+yearsToRetire(1940, 'Mary');
+*/
+
+
+/****************************
+* Function Statements & Expressions
+*/
+
+// Function declaration
+// function whatDoYuoDo(job, firstName){}
+
+
+// Function expression
+
+/*
+var whatDoYouDo = function(job, firstName){
+    switch(job){
+        case 'teacher':
+            return firstName + ' teaches kids.';
+        case 'driver':
+            return firstName + ' drives an uber.'
+        case 'designer':
+            return firstName + ' designs crap.'
+        default:
+            return firstName + ' does something else.'
+    }
+}
+
+console.log(whatDoYouDo('driver', 'steve'));
+console.log(whatDoYouDo('teacher', 'James'));
+*/
+
+/******************************
+* Arrays
+*/
+
+/*// Initialize new array
+var names = ['John', 'Mark', 'Jane'];
+var years = new Array(1990, 1969, 1948);
+
+console.log(names);
+console.log(names.length);
+console.log(names[2]);
+
+
+// Mutate Array Data
+names[1] = 'farty pants';
+names[names.length] = 'Mary';
+
+console.log(names);
+
+// Different data types
+var john = ['John', 'Smith', 1990, 'teacher', false];
+
+john.push('blue'); // adds element to end of array
+john.unshift('Mr'); // adds element to start of array
+john.pop(); // removes element from end of array
+john.shift(); // removes element from start of array
+
+
+console.log(john);
+
+console.log(john.indexOf(1990)); // finds index of value in array. Returns -1 if not found in the array.
+
+// if value not found in array -1
+var isDesigner = john.indexOf('designer') === -1 ? 'John is NOT a designer'
+: 'John IS a designer';
+console.log(isDesigner);*/
+
+
+/*****************************
+* CODING CHALLENGE 3 21/03/2019
+*/
+
+/*
+John and his family went on a holiday and went to 3 different restaurants. The bills were $124, $48 and $268.
+
+To tip the waiter a fair amount, John created a simple tip calculator (as a function). He likes to tip 20% of the bill when the bill is less than $50, 15% when the bill is between $50 and $200, and 10% if the bill is more than $200.
+
+In the end, John would like to have 2 arrays:
+1) Containing all three tips (one for each bill)
+2) Containing all three final paid amounts (bill + tip).
+
+(NOTE: To calculate 20% of a value, simply multiply it with 20/100 = 0.2)
+
+GOOD LUCK 😀
+*/
+
+var bills = [124, 48, 268]; // bills
+var tips = []; // container for tips
+var totals = []; // container for total payable bill
+
+
+/*****
+* My attempt
+
+function howBigTip(bill){
+    if (billSize < 50) {
+        return tips.push((20 / 100) * bill);
+    } else if (bill >= 50 && billSize < 200){
+        return tips.push((15 / 100) * bill);
+    } else {
+        return tips.push((10 / 100) * bill);
+    }
+}
+
+
+
+function totalBill(billAmount){
+    howBigTip(billAmount);
+    totals.push(billAmount);
+    return
+}
+
+totalBill(bills[0]);
+totalBill(bills[1]);
+totalBill(bills[2]);
+
+console.log('Bill\'s ' + bills);
+console.log('Tip\'s ' + tips);
+console.log('Total bill\'s ' + totals);
+
+
+*/
+
+
+
+
+/************
+* Solution
+*/
+
+function tipCalculator(bill) {
+    var percentage;
+    if (bill < 50) {
+        percentage = 0.2;
+    } else if (bill >= 50 && bill < 200) {
+        percentage = 0.15;
+    } else {
+        percentage = 0.1;
+    }
+    return percentage * bill;
+}
+
+
+
+
+console.log(tipCalculator(bills[0]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
