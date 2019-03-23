@@ -479,7 +479,7 @@ In the end, John would like to have 2 arrays:
 
 GOOD LUCK 😀
 */
-
+/*
 var bills = [124, 48, 268]; // bills
 var tips = []; // container for tips
 var totals = []; // container for total payable bill
@@ -515,14 +515,14 @@ console.log('Tip\'s ' + tips);
 console.log('Total bill\'s ' + totals);
 
 
-*/
+
 
 
 
 
 /************
 * Solution
-*/
+
 
 function tipCalculator(bill) {
     var percentage;
@@ -550,7 +550,140 @@ tipCalculator(bills[1]),
 tipCalculator(bills[2])
 ];
 
-alert(tips);
+
+totals = [tipCalculator(bills[0])+bills[0],
+            tipCalculator(bills[1])+bills[1],
+            tipCalculator(bills[2])+bills[2]
+         ];
+
+console.log(bills, tips, totals);
+
+*/
+
+/***************************
+* Objects
+*/
+
+/*
+// Object literal
+var john = {
+    firstName: 'John', // key value pair
+    lastName: 'Smith',
+    birthYear: 1982,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+};
+
+console.log(john.firstName); // to read a key value, use 'dot' notation
+console.log(john['lastName']); // to read a key value, or brackets and a key name as a string
+var x = 'birthYear';
+console.log(john[x]);
+
+// to mutate data of an object
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
+
+// New object syntax
+var jane = new Object();
+jane.name = 'Jane';
+jane.birthYear = 1968;
+jane['lastName'] = 'Smith';
+console.log(jane);
+*/
+
+
+/*******************************
+*Objects and methods
+*/
+
+/*// functions attached to objects are called methods
+
+var john = {
+    firstName: 'John', // key value pair
+    lastName: 'Smith',
+    birthYear: 1982,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function(currentYear){
+        this.age = currentYear - this.birthYear; // Use this.___ to call property relating to the current object.
+        // you can also use this.___ to append a property
+    }
+
+};
+
+john.calcAge(2020);
+
+console.log(john);*/
+
+/**********************************
+CODING CHALLENGE 4 23/03/2019
+*/
+
+
+/*
+Let's remember the first coding challenge where Mark and John compared their BMIs. Let's now implement the same functionality with objects and methods.
+1. For each of them, create an object with properties for their full name, mass, and height
+2. Then, add a method to each object to calculate the BMI. Save the BMI to the object and also return it from the method.
+3. In the end, log to the console who has the highest BMI, together with the full name and the respective BMI. Don't forget they might have the same BMI.
+
+Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+
+GOOD LUCK 😀
+*/
+
+
+/*function calcBMI(mass, height){
+    return mass / (height * height);
+console.log(calcBMI(1,2));
+}*/ 
+
+var john = {
+    fullName: 'John Smith',
+    mass: 60
+    , // Mass in kilos
+    height: 2, // Height in metres
+    calcBMI: function() {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi;
+    }
+}
+
+var mark = {
+    fullName: 'Mark E Mark',
+    mass: 60, // Mass in kilos
+    height: 2, // Height in metres
+    calcBMI: function() {
+        this.bmi = this.mass / (this.height * this.height);
+        return this.bmi;
+    }
+}
+
+/*
+john.calcBMI();
+mark.calcBMI();
+
+if (john.bmi > mark.bmi) {
+    console.log(john.fullName + ' has the highest bmi at ' + john.bmi);
+} else if (john.bmi < mark.bmi) {
+    console.log(mark.fullName + ' has the highest bmi at ' + mark.bmi);
+} else {
+    console.log('both ' + john.fullName + ' and ' + mark.fullName + ' have the same bmi at ' + john.bmi);
+}
+*/
+
+
+// From solution - integrate the function calls into the first line of the if statement. Works because of the return at the end of the method statement in the object.
+
+if (john.calcBMI() > mark.calcBMI()) {
+    console.log(john.fullName + ' has the highest bmi at ' + john.bmi);
+} else if (john.bmi < mark.bmi) {
+    console.log(mark.fullName + ' has the highest bmi at ' + mark.bmi);
+} else {
+    console.log('both ' + john.fullName + ' and ' + mark.fullName + ' have the same bmi at ' + john.bmi);
+}
 
 
 
@@ -559,6 +692,11 @@ alert(tips);
 
 
 
+
+
+
+
+console.log(john, mark);
 
 
 
