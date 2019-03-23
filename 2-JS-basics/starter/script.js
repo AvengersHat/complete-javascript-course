@@ -545,6 +545,15 @@ console.log(tipCalculator(bills[0]));
 
 //test
 
+tips = [tipCalculator(bills[0]),
+tipCalculator(bills[1]),
+tipCalculator(bills[2])
+];
+
+alert(tips);
+
+
+
 
 
 
