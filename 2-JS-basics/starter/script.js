@@ -709,6 +709,7 @@ for (i = john.length; i > 0; i--){
 
 while ((john.length - 1) > 0){
     console.log(john[i-1]);
+    break
 }
 
 
