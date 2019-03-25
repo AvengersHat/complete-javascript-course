@@ -676,7 +676,7 @@ if (john.bmi > mark.bmi) {
 
 
 // From solution - integrate the function calls into the first line of the if statement. Works because of the return at the end of the method statement in the object.
-
+/*
 if (john.calcBMI() > mark.calcBMI()) {
     console.log(john.fullName + ' has the highest bmi at ' + john.bmi);
 } else if (john.bmi < mark.bmi) {
@@ -689,16 +689,23 @@ if (john.calcBMI() > mark.calcBMI()) {
 
 
 
-
-
-
-
-
-
-
 console.log(john, mark);
+*/
+
+/*************************************************
+* Loops and Iteration
+*/
 
 
+
+
+var john = ['John', 'Smith', 1990, 'teacher', false];
+
+// for (starting value; test condition; increment) {}
+
+for (i = john.length; i >= 0; i--){
+    
+}
 
 
 
