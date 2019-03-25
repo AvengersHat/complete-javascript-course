@@ -699,7 +699,7 @@ console.log(john, mark);
 
 
 
-var john = ['John', 'Smith', 1990, 'teacher', false];
+var john = ['John', 'Smith', 1990, 'teacher', false, 'blue'];
 
 // for (starting value; test condition; increment) {}
 
