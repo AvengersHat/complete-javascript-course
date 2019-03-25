@@ -703,9 +703,11 @@ var john = ['John', 'Smith', 1990, 'teacher', false];
 
 // for (starting value; test condition; increment) {}
 
-for (i = john.length; i >= 0; i--){
-    
+for (i = john.length; i > 0; i--){
+    console.log(john[i-1]);
 }
+
+
 
 
 
