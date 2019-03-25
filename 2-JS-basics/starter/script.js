@@ -198,7 +198,7 @@ var age = 25;
 if (age < 13) {
     console.log(firstName + ' is a boy.');
 } else if (age >= 13 && age < 20) { // Between 13 and 20 === age >= 13 AND age < 20
-    console.log(firstName + ' is a teenager.');        
+    console.log(firstName + ' is a teenager.');
 } else if(age >= 20 && age < 30) { // Between 20 and 30
     console.log(firstName + ' is a young man.')
 } else {
@@ -380,13 +380,13 @@ function yearsToRetire(year, firstName)
 {
     var age = calculateAge(year);
     var retirement = 65 - age;
-    
+
     if (retirement > 0) {
-    console.log(firstName +' retires in ' + retirement + ' years.')    
+    console.log(firstName +' retires in ' + retirement + ' years.')
     } else {
-    console.log(firstName + ' is retired.')    
+    console.log(firstName + ' is retired.')
     }
-    
+
 }
 
 yearsToRetire(1982, 'Gareth');
@@ -638,7 +638,7 @@ GOOD LUCK 😀
 /*function calcBMI(mass, height){
     return mass / (height * height);
 console.log(calcBMI(1,2));
-}*/ 
+}*/
 
 var john = {
     fullName: 'John Smith',
@@ -707,7 +707,9 @@ for (i = john.length; i > 0; i--){
     console.log(john[i-1]);
 }
 
-
+while ((john.length - 1) > 0){
+    console.log(john[i-1]);
+}
 
 
 
