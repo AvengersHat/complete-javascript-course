@@ -703,16 +703,21 @@ var john = ['John', 'Smith', 1990, 'teacher', false];
 
 // for (starting value; test condition; increment) {}
 
+
+// For loop
 for (i = john.length; i > 0; i--){
     console.log(john[i-1]);
 }
 
-/* Try to make while loop work - rewatch video and try again!
-while ((john.length - 1) > 0){
-    console.log(john[i-1]);
-    break
+
+// While loop
+var i = john.length - 1;
+while (i >= 0){
+    console.log(john[i]);
+    i--;
 }
-*/
+
+
 
 
 
