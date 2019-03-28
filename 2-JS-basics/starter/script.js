@@ -639,7 +639,7 @@ GOOD LUCK 😀
     return mass / (height * height);
 console.log(calcBMI(1,2));
 }*/
-
+/*
 var john = {
     fullName: 'John Smith',
     mass: 60
@@ -660,7 +660,7 @@ var mark = {
         return this.bmi;
     }
 }
-
+*/
 /*
 john.calcBMI();
 mark.calcBMI();
@@ -764,26 +764,88 @@ GOOD LUCK 😀
 
 var john = {
     firstName: 'John',
-    bills: [124, 48, 268, 180, 42],
-    tips:[],
-    finalBills:[],
+    bills: [10],//[124, 48, 268, 180, 42, 1000, 1000],
+    tips: [],
+    finalBills: [],
     
-        
     calcTip: function (){
-                var percentage;
-                var bill;
-        
-    // for loop to setup current bill and percentage
-        
-    if (this.bills < 50) {
-        percentage = 0.2;
-    } else if (this.bills >= 50 && this.bills < 200) {
-        percentage = 0.15;
-    } else {
-        percentage = 0.1;
-    }
-    this.tips.push(percentage * this.bills);
+    // this.finalBills = [];  new properties can be added to the object john within the function with ths.___ 
+                
+        for (var i = 0; i < this.bills.length; i++) {
+            var percentage;
+            var bill = this.bills;  // can be used to tidy code below   
+            
+            if (this.bills[i] < 50) {                          // decides percentage
+                percentage = 0.2;
+            } else if (this.bills[i] >= 50 && this.bills[i] < 200) {
+                percentage = 0.15;
+            } else {
+                percentage = 0.1;
+            }
+            // Calc tips and final bills to add to arrays
+            this.tips[i] = (percentage * this.bills[i]);        // tips
+            this.finalBills[i] = (this.tips[i] + this.bills[i]);
+        }
     }
 }
 
-console.log(john);
+var mark = {
+    firstName: 'Mark',
+    bills: [5], //[77, 375, 110, 45],
+    tips: [],
+    finalBills: [],
+    
+    calcTip: function (){
+    // this.finalBills = [];  new properties can be added to the object john within the function with ths.___ 
+                
+        for (var i = 0; i < this.bills.length; i++) {
+            var percentage;
+            var bill = this.bills;  // can be used to tidy code below   
+            
+            if (this.bills[i] < 100) {                          // decides percentage
+                percentage = 0.2;
+            } else if (this.bills[i] >= 100 && this.bills[i] < 300) {
+                percentage = 0.10;
+            } else {
+                percentage = 0.25;
+            }
+            // Calc tips and final bills to add to arrays
+            this.tips[i] = (percentage * this.bills[i]);        // tips
+            this.finalBills[i] = (this.tips[i] + this.bills[i]);
+        }
+    }
+}
+
+// Calcualte average tip
+function tipsAverage(tipsArray){
+    var runningTotal = 0;
+    
+    for (var i = 0; i < tipsArray.length; i++) {
+        (runningTotal = runningTotal + tipsArray[i]);
+    }
+    return runningTotal / tipsArray.length;
+}
+
+
+
+
+
+
+john.calcTip();
+mark.calcTip();
+tipsAverage(john.tips);
+tipsAverage(mark.tips);
+console.log(tipsAverage(john.tips));
+console.log(tipsAverage(mark.tips));
+
+// Publish highest average
+
+
+
+if (tipsAverage(john.tips) > tipsAverage(mark.tips)) {
+    console.log(john.firstName + ' has the highest average ' + tipsAverage(john.tips));
+} else if (tipsAverage(john.tips) < tipsAverage(mark.tips)) {
+    console.log(mark.firstName + ' has the highest average ' + tipsAverage(mark.tips));
+} else {
+    console.log('both ' + john.firstName + ' and ' + mark.firstName + ' have the same tip average at ' + john.tips);
+}
