@@ -820,10 +820,10 @@ var mark = {
 function tipsAverage(tipsArray){
     var runningTotal = 0;
     
-    for (var i = 0; i < tipsArray.length; i++) {
-        (runningTotal = runningTotal + tipsArray[i]);
+    for (var i = 0; i < this.tipsArray.length; i++) {
+        (runningTotal = runningTotal + this.tipsArray[i]);
     }
-    return runningTotal / tipsArray.length;
+    return runningTotal / this.tipsArray.length;
 }
 
 
