@@ -232,7 +232,7 @@ console.log(drink);
     var drink = 'juice';
 }*/
 
-// Switch statement
+//  statement
 /*
 var job = 'instructor';
 switch (job) {
@@ -761,6 +761,10 @@ GOOD LUCK 😀
 */
 
 
+/*********
+
+first go
+
 
 var john = {
     firstName: 'John',
@@ -848,4 +852,90 @@ if (tipsAverage(john.tips) > tipsAverage(mark.tips)) {
     console.log(mark.firstName + ' has the highest average ' + tipsAverage(mark.tips));
 } else {
     console.log('both ' + john.firstName + ' and ' + mark.firstName + ' have the same tip average at ' + john.tips);
+}
+*/
+
+/**** Second Go ******/
+
+
+var john = {
+  firstName: 'John Smith',
+  bills: [124, 48, 268, 180, 42],
+  tipCalc: function () {
+    this.finalBills = [];
+    this.tips = [];
+    
+    for (var i = 0; i < this.bills.length; i++){
+    var percentage;
+    var bill = this.bills[i]
+    // Decides percentage  
+    switch (true) { // Switch test to see which condition is true!!! YES
+      case (bill < 50): percentage = .20;
+        break;
+      case (50 < bill < 200): percentage = .15;
+        break;
+      default: percentage = .1;
+      }
+    // Calculate tips and finalBills and add to arrays  
+      this.tips[i] = percentage * bill;
+      this.finalBills[i] = percentage * bill + bill;
+      }
+  }
+}
+
+var mark = {
+  firstName: 'Mark Miller',
+  bills: [77, 375, 110, 45],
+  tipCalc: function () {
+    this.finalBills = [];
+    this.tips = [];
+    
+    for (var i = 0; i < this.bills.length; i++){
+    var percentage;
+    var bill = this.bills[i]
+    // Decides percentage  
+    switch (true) { // Switch test to see which condition is true!!! YES
+      case (bill < 100): percentage = .2;
+        break;
+      case (100 < bill < 300): percentage = .1;
+        break;
+      default: percentage = .25;
+      }
+    // Calculate tips and finalBills and add to arrays  
+      this.tips[i] = percentage * bill;
+      this.finalBills[i] = percentage * bill + bill;
+      }
+  }
+}
+
+
+john.tipCalc();
+mark.tipCalc();
+
+
+function avg(tips){
+  var sum = 0;
+  for (var i = 0; i < tips.length; i++) {
+    var sum = sum + tips[i];
+  }
+  return sum / tips.length;
+}
+
+
+// Calculate averages and add to the john object
+john.average = avg(john.tips);
+
+mark.average = avg(mark.tips);
+
+console.log(john, mark);
+console.log(john.tips, mark.tips);
+console.log(avg(john.tips), avg(mark.tips));
+
+
+switch (true) {
+    case (john.average > mark.average): console.log(john.firstName + ' is highest');
+    break;
+    case (mark.average > john.average): console.log(mark.firstName + ' is highest');
+    break;
+    default: console.log('they\'re the same')
 }
