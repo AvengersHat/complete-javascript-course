@@ -18,7 +18,7 @@ When a function is executed, it creates a new execution context and stacks ontop
 When it finishes it is said to return to the next context in the stack and pops off the execution stack.
 
 */
-
+/*
 // Function declaration, can call function before it is created
 calculateAge(1990);
 
@@ -44,7 +44,7 @@ function foo() {
 }
 foo();
 console.log(age);
-
+*/
 
 
 
@@ -93,7 +93,8 @@ function first() {
 
 function third() {
     var d = 'John';
-    console.log(a + b + c + d);
+    //console.log(c);
+    console.log(a + d);
 }
 */
 
@@ -102,11 +103,42 @@ function third() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+//console.log(this);
+/*
+calculateAge(1985);
 
+function calculateAge(year) {
+    console.log(2016 - year);
+    console.log(this);
+}
+*/
 
+var john = {
+    name: 'John',
+    yearOfBirth: 1990,
+    calculateAge: function() {
+        console.log(this);
+        console.log(2016 - this.yearOfBirth);
+        
+        /*
+        function innerFunction() {
+            console.log(this);
+        }
+        innerFunction();
+        */
+    }
+}
 
+john.calculateAge();
 
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1984
+};
 
+// Method borrowing - without parentheses method is the variable
+mike.calculateAge = john.calculateAge;
+mike.calculateAge();
 
-
+// this only becomes something once a method is called.
 
