@@ -16,5 +16,5 @@ activePlayer = 0;
 
 dice = Math.floor(Math.random() * 6) + 1;
 
-document.querySelector('#current-0').textContent = dice;// Use querySelector to manipulate elements by id, use a string with # as in css to select
+document.querySelector('#current-0').textContent = dice;// Use querySelector to manipulate elements by id, use a string with # as in css to select them
 
