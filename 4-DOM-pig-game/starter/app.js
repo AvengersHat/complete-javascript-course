@@ -12,7 +12,7 @@ var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 document.querySelector('.dice').style.display = 'none'; //Use dot notation for classes. to change css use the .style method and the .property This is to hide the dice on startup
 
@@ -37,10 +37,68 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     // 3. Update the round score IF the rolled number was not a 1
     
     
+    if (dice !== 1) {
+        //Add score
+        roundScore += dice; // roundScore = roundScore + dice
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        
+    } else {
+        resetPlayer();
+        /*
+        //Next player - Using ternary function condition ? action : else
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0; // roundScore reset to 0 for next player
+        
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+        
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        
+        //document.querySelector('.player-0-panel').classList.remove('active');
+        //document.querySelector('.player-1-panel').classList.add('active');
+        
+        document.querySelector('.dice').style.display = 'none';
+        */
+    }
+    
 });
 
+//GE before the DRY principle DON'T REPEAT YOURSELF
+document.querySelector('.btn-hold').addEventListener('click', function() {
+    
+    // 1. Add current roundScore to score and display to ui
+    scores[activePlayer] += roundScore;
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    
+    // 2. Finish player turn
+    resetPlayer();
+    /*
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0; // roundScore reset to 0 for next player
+        
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+    
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+    
+        document.querySelector('.dice').style.display = 'none';
+        */
+})
 
-
+function resetPlayer() {
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        roundScore = 0; // roundScore reset to 0 for next player
+        
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
+    
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+    
+        document.querySelector('.dice').style.display = 'none';
+}
 
 
 
