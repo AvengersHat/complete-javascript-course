@@ -95,6 +95,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.getElementById('name-' + activePlayer).textContent = 'WINNER';
         // MAKE THE ROLL  AND HOLD BUTTONS INACTIVE
         //document.getElementById('.btn-roll').disabled = true;
+        //http://jsfiddle.net/SPddm/300/
     } else {
         switchPlayer();
     }
