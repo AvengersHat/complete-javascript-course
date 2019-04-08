@@ -8,67 +8,62 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer, gamePlaying;
 
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
+init();
 
-document.querySelector('.dice').style.display = 'none'; //Use dot notation for classes. to change css use the .style method and the .property This is to hide the dice on startup
+//document.querySelector('.dice').style.display = 'none'; //Use dot notation for classes. to change css use the .style method and the .property This is to hide the dice on startup
 
 
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+//document.getElementById('score-0').textContent = '0';
+//document.getElementById('score-1').textContent = '0';
+//document.getElementById('current-0').textContent = '0';
+//document.getElementById('current-1').textContent = '0';
 
 
 
 //Anonymous function to roll the dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
-   
-    // 1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+   if(gamePlaying) {
+       // 1. Random number
+       var dice = Math.floor(Math.random() * 6) + 1;
     
-    // 2. Display the Result
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
-    
-    
-    // 3. Update the round score IF the rolled number was not a 1
-    
-    
-    if (dice !== 1) {
-        //Add score
-        roundScore += dice; // roundScore = roundScore + dice
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+       // 2. Display the Result
+       var diceDOM = document.querySelector('.dice');
+       diceDOM.style.display = 'block';
+       diceDOM.src = 'dice-' + dice + '.png';
+
+       // 3. Update the round score IF the rolled number was not a 1
+       if (dice !== 1) {
+            //Add score
+            roundScore += dice; // roundScore = roundScore + dice
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
         
-    } else {
-        switchPlayer();
-        /*
-        //Next player - Using ternary function condition ? action : else
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        roundScore = 0; // roundScore reset to 0 for next player
+       } else {
+            switchPlayer();
+            /*
+            //Next player - Using ternary function condition ? action : else
+            activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+            roundScore = 0; // roundScore reset to 0 for next player
         
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
+            document.getElementById('current-0').textContent = '0';
+            document.getElementById('current-1').textContent = '0';
         
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
+            document.querySelector('.player-0-panel').classList.toggle('active');
+            document.querySelector('.player-1-panel').classList.toggle('active');
         
-        //document.querySelector('.player-0-panel').classList.remove('active');
-        //document.querySelector('.player-1-panel').classList.add('active');
+            //document.querySelector('.player-0-panel').classList.remove('active');
+            //document.querySelector('.player-1-panel').classList.add('active');
         
-        document.querySelector('.dice').style.display = 'none';
-        */
-    }
-    
+            document.querySelector('.dice').style.display = 'none';
+            */
+        }
+   } 
 });
 
 //GE before the DRY principle DON'T REPEAT YOURSELF
 document.querySelector('.btn-hold').addEventListener('click', function() {
-    
+    if (gamePlaying){
     // 1. Add current roundScore to score and display to ui
     scores[activePlayer] += roundScore;
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
@@ -93,12 +88,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         //won game
         //alert('Player ' + activePlayer + ' won the game');
         document.getElementById('name-' + activePlayer).textContent = 'WINNER';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        gamePlaying = false;
         // MAKE THE ROLL  AND HOLD BUTTONS INACTIVE
-        //document.getElementById('.btn-roll').disabled = true;
+//        document.querySelector('.btn-roll').disabled = true;
+//        document.querySelector('.btn-hold').disabled = true;
         //http://jsfiddle.net/SPddm/300/
     } else {
         switchPlayer();
     }
+}
 })
 
 function switchPlayer() {
@@ -117,7 +118,14 @@ function switchPlayer() {
 //Add new game button
 
 
-document.querySelector('.btn-new').addEventListener('click', function() {
+document.querySelector('.btn-new').addEventListener('click', init);
+
+
+function init() {
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+    gamePlaying = true;
     
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
@@ -125,14 +133,21 @@ document.querySelector('.btn-new').addEventListener('click', function() {
     document.getElementById('name-1').textContent = 'PLAYER 2';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
-    scores = [0,0];
-    roundScore = 0;
-    activePlayer = 0;
     
-})
-
-
-
+    document.querySelector('.dice').style.display = 'none';
+    
+    document.querySelector('.btn-roll').disabled = false;
+    document.querySelector('.btn-hold').disabled = false;
+    
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    
+    document.querySelector('.player-' + activePlayer + '-panel').classList.add('active');
+    
+}
 
 
 
