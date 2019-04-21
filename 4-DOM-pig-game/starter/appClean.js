@@ -8,9 +8,19 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
-var scores, roundScore, activePlayer, gamePlaying, previousRoll;
+var scores, roundScore, activePlayer, gamePlaying, previousRoll, targetScore;
 
 init();
+//Function to find the target score
+//function setTargetScore (){}
+
+/*
+document.querySelector('.btn-score').addEventListener('click', function() {
+   if(gamePlaying) {
+       var targetScore = 
+   } 
+});
+*/
 
 //Anonymous function to roll the dice
 document.querySelector('.btn-roll').addEventListener('click', function() {
