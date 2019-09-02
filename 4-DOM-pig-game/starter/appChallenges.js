@@ -28,7 +28,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
    if(gamePlaying) {
        // 1. Random number
        var dice = Math.floor(Math.random() * 6) + 1;
-       // Double 6 of death
+       var diceTwo = Math.floor(Math.random() * 6) + 1;
+       // Double 6 of death if(dice === previousRoll)
        if (dice + previousRoll === 12){
            scores[activePlayer] = 0; // Set their score to 0
            document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer]; // Update UI
@@ -39,11 +40,17 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
        var diceDOM = document.querySelector('.dice');
        diceDOM.style.display = 'block';
        diceDOM.src = 'dice-' + dice + '.png';
+       
+       //2.a Display second dice result
+       
+       var diceDOMTwo = document.querySelector('.dice-second'); 
+       diceDOMTwo.style.display = 'block';
+       diceDOMTwo.src = 'dice-' + diceTwo + '.png';
 
        // 3. Update the round score IF the rolled number was not a 1
        if (dice !== 1) {
             //Add score
-            roundScore += dice; // roundScore = roundScore + dice
+            roundScore += dice + diceTwo; // roundScore = roundScore + dice
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
             previousRoll = dice; // Save it to previousRoll
            console.log(previousRoll);
@@ -116,6 +123,7 @@ function init() {
     document.getElementById('current-1').textContent = '0';
     
     document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice-second').style.display = 'none';
     
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
